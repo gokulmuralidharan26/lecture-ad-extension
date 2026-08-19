@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Lecture Notes Ad Companion",
+  "version": "0.1.0",
+  "description": "Whenever a YouTube ad plays, reads your uploaded lecture notes out loud so you're learning instead of waiting.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content-youtube.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Lecture Notes Companion"
+  }
+}
